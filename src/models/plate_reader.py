@@ -47,11 +47,20 @@ class PlateReader(nn.Module):
         return x
 
     def read_text(self, image: bytes) -> str:
+        """
+        raises InvalidImage
+        :param image:
+        :return:
+        """
         transform = T.Compose([
             T.PILToTensor()
         ])
-        
-        image = Image.open(image)
+
+        try:
+            image = Image.open(image)
+        except UnidentifiedImageError:
+            raise InvalidImage
+
         image = transform(image)
 
         image = image.repeat(3, 1, 1)
