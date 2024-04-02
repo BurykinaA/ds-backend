@@ -28,7 +28,7 @@ class PlateReaderClient:
 
 
 if __name__ == '__main__':
-    client = PlateReaderClient(host='http://127.0.0.1:8080')
+    client = PlateReaderClient(host='http://51.250.83.169:7878')
     with open('./images/9965.jpg', 'rb') as im:
         res = client.read_plate_number(im)
         print(res)
