@@ -7,28 +7,27 @@ class PlateReaderClient:
 
     def read_plate_number(self, im):
         res = requests.post(
-            f'{self.host}/readPlateNumber',
-            headers={'Content-Type': 'application/x-www-form-urlencoded'},
+            f"{self.host}/readPlateNumber",
+            headers={"Content-Type": "application/x-www-form-urlencoded"},
             data=im,
         )
 
         return res.json()
 
-
     def greeting(self, user: str):
         res = requests.post(
-            f'{self.host}/readPlateNumber',
-            headers={'Content-Type': 'application/x-www-form-urlencoded'},
+            f"{self.host}/readPlateNumber",
+            headers={"Content-Type": "application/x-www-form-urlencoded"},
             json={
-                'user': user,
+                "user": user,
             },
         )
 
         return res.json()
 
 
-if __name__ == '__main__':
-    client = PlateReaderClient(host='http://51.250.83.169:7878')
-    with open('./images/9965.jpg', 'rb') as im:
+if __name__ == "__main__":
+    client = PlateReaderClient(host="http://51.250.83.169:7878")
+    with open("./images/9965.jpg", "rb") as im:
         res = client.read_plate_number(im)
         print(res)
